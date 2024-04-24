@@ -1,5 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
-import { eachDayOfInterval, eachHourOfInterval, eachMonthOfInterval, eachWeekOfInterval, endOfDay, endOfMonth, endOfYear, format, getWeekOfMonth, isSameDay, isSameMonth, isSameWeek, isWithinInterval, startOfDay, startOfMonth, startOfYear } from "date-fns";
+import { eachDayOfInterval, eachHourOfInterval, eachMonthOfInterval, eachWeekOfInterval, endOfDay, endOfMonth, endOfYear, format, differenceInDays, getWeekOfMonth, isSameDay, isSameMonth, isSameWeek, isWithinInterval, startOfDay, startOfMonth, startOfYear } from "date-fns";
 import { DateRange } from "react-day-picker";
 import { twMerge } from "tailwind-merge"
 import { Appointment } from "~/models/Appointment";
@@ -60,6 +60,7 @@ const isAppointmentInSlot = (
   dateRange: DateRange,
 ): boolean => {
   if (!dateRange.from) return false;
+
   switch (viewMode) {
     case "day":
       return (
@@ -67,7 +68,7 @@ const isAppointmentInSlot = (
       );
     case "week":
       return (
-        apptDate.getDay() - 1 === index &&
+        apptDate.getDay() - (6 - differenceInDays(new Date(dateRange.to!), new Date(dateRange.from))) === index &&
         isSameWeek(apptDate, dateRange.from)
       );
     case "month":
@@ -84,22 +85,22 @@ const isAppointmentInSlot = (
 
 export const getLabelsForView = (viewMode: 'day' | 'week' | 'month' | 'year', dateRange: { start: Date; end: Date }): string[] => {
   switch (viewMode) {
-      case 'day':
-          // Generate hourly labels for each day in the range
-          return eachHourOfInterval({ start: startOfDay(dateRange.start), end: endOfDay(dateRange.end) }).map(hour => format(hour, 'HH:mm'));
-      case 'week':
-          // Weekly labels based on the week number within the year
-          return eachDayOfInterval({ start: dateRange.start, end: dateRange.end })
-              .map(day => `${format(day, 'ccc ')} the ${ format(day, 'do') }`);
-      case 'month':
-          // Monthly labels showing the full month name and year
-          return eachWeekOfInterval({ start: startOfMonth(dateRange.start), end: endOfMonth(dateRange.end) })
-              .map(week => `${format(week, 'wo')} week of ${format(week, 'MMM')}`);
-      case 'year':
-          // Yearly labels showing month names only
-          return eachMonthOfInterval({ start: startOfYear(dateRange.start), end: endOfYear(dateRange.end) })
-              .map(month => format(month, 'MMM'));
-      default:
-          return [];
+    case 'day':
+      // Generate hourly labels for each day in the range
+      return eachHourOfInterval({ start: startOfDay(dateRange.start), end: endOfDay(dateRange.end) }).map(hour => format(hour, 'HH:mm'));
+    case 'week':
+      // Weekly labels based on the week number within the year
+      return eachDayOfInterval({ start: dateRange.start, end: dateRange.end })
+        .map(day => `${format(day, 'ccc ')} the ${format(day, 'do')}`);
+    case 'month':
+      // Monthly labels showing the full month name and year
+      return eachWeekOfInterval({ start: startOfMonth(dateRange.start), end: endOfMonth(dateRange.end) })
+        .map(week => `${format(week, 'wo')} week of ${format(week, 'MMM')}`);
+    case 'year':
+      // Yearly labels showing month names only
+      return eachMonthOfInterval({ start: startOfYear(dateRange.start), end: endOfYear(dateRange.end) })
+        .map(month => format(month, 'MMM'));
+    default:
+      return [];
   }
 }

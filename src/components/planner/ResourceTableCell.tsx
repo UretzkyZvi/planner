@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { useData } from "~/contexts/CalendarDataContext";
+import { useData } from "~/contexts/PlannerDataContext";
 import { Resource } from "~/models";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";

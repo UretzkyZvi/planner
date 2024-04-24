@@ -15,7 +15,7 @@ import {
   Appointment as AppointmentType,
   createAppointmentSchema,
 } from "~/models/Appointment";
-import { useData } from "~/contexts/CalendarDataContext";
+import { useData } from "~/contexts/PlannerDataContext";
 import { Button } from "../ui/button";
 import {
   Dialog,

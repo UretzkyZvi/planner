@@ -5,7 +5,7 @@ import { Appointment as AppointmentType, Resource } from "~/models";
 import {
   PlannerDataContextProvider,
   useData,
-} from "~/contexts/CalendarDataContext";
+} from "~/contexts/PlannerDataContext";
 import { PlannerProvider, useCalendar } from "~/contexts/PlannerContext";
 import { Timeline } from "./Timeline";
 import { Table, TableBody, TableRow } from "../ui/table";

@@ -5,7 +5,7 @@ import { cn } from "~/lib/utils";
 import { DateRangePicker } from "../ui/date-range-picker";
 import { DateRange } from "react-day-picker";
 import { endOfDay, endOfWeek, startOfWeek } from "date-fns";
-import { useData } from "~/contexts/CalendarDataContext";
+import { useData } from "~/contexts/PlannerDataContext";
 import AddAppointmentDialog from "./AddAppointmentDialog";
 
 interface CalendarToolbarProps extends React.HTMLAttributes<HTMLDivElement> {}

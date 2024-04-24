@@ -1,13 +1,15 @@
 # Planner
 
-Planner is an advanced scheduling and resource management tool built with React. This project is designed to integrate seamlessly into your workflow, providing intuitive interfaces and efficient management of appointments and resources. The Planner leverages the `shadcn/ui` philosophy, emphasizing reusability and customization of components rather than relying on a static library of UI elements.
+Planner is an advanced scheduling component for React, designed to enhance applications with resource management capabilities. This component seamlessly integrates into your existing workflows, offering intuitive interfaces for efficient appointment and resource management. Embracing the shadcn/ui philosophy, Planner focuses on reusability and customization, providing flexible UI components that are easily adaptable rather than fixed to a static library.
+
+![demo](./images/demo.gif)
 
 ## Features
 
-- **Dynamic Scheduling**: Manage and view appointments effectively across different time views (day, week, month, year).
-- **Resource Management**: Assign and track resources such as rooms or personnel linked to specific appointments.
-- **Drag and Drop**: Intuitive drag-and-drop interface for adjusting appointments and resource allocations directly within the calendar view, powered by Atlassian's Pragmatic drag and drop.
-- **Customizable UI**: Built with `shadcn/ui` components that are highly customizable to fit into any application design.
+- **Dynamic Scheduling**: Utilize a versatile component to manage and visualize appointments across various time frames including daily, weekly, monthly, and yearly views.
+- **Resource Management**: Incorporate resource tracking functionalities, assigning and managing elements such as rooms or personnel in relation to appointments.
+- **Drag and Drop**: Enhance your application with an intuitive drag-and-drop interface for adjusting appointments and resources, facilitated by Atlassian's Pragmatic drag and drop.
+- **Customizable UI**: Leverage `shadcn/ui` for highly customizable UI components, designed to seamlessly integrate and adapt to your application's design aesthetics.
 
 ## Project Structure
 

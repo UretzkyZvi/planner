@@ -32,7 +32,6 @@ export const PlannerDataContextProvider: FC<{
     appointments: appointmentService.getAppointments(),
     resources: resourceService.getResources(),
     addAppointment: (appointment) => {
-      console.log("Adding appointment", appointment);
       appointmentService.createAppointment(appointment);
       handleUpdate();
     },

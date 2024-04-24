@@ -17,6 +17,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import Planner from "~/components/planner/Planner";
+import { ModeToggle } from "~/components/ModeToggle";
 
 export default function HomePage() {
   const [resources, setResources] = useState<Resource[]>([]);
@@ -131,6 +132,7 @@ export default function HomePage() {
               />
             </div>
           </form>
+          <ModeToggle/>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">

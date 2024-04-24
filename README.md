@@ -107,9 +107,7 @@ Experience Planner in action: [Planner Demo](https://planner-tau-two.vercel.app/
 We welcome contributions to Planner! Whether it's feature enhancements, bug fixes, or documentation improvements, follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -
-
-b feature/your-feature`).
+2. Create a new branch (`git checkout -b feature/your-feature`).
 3. Commit your changes (`git commit -am 'Add some feature'`).
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Open a new Pull Request.

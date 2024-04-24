@@ -1,29 +1,79 @@
-# Create T3 App
+# Planner
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Planner is an advanced scheduling and resource management tool built with React. This project is designed to integrate seamlessly into your workflow, providing intuitive interfaces and efficient management of appointments and resources. The Planner leverages the `shadcn/ui` philosophy, emphasizing reusability and customization of components rather than relying on a static library of UI elements.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **Dynamic Scheduling**: Manage and view appointments effectively across different time views (day, week, month, year).
+- **Resource Management**: Assign and track resources such as rooms or personnel linked to specific appointments.
+- **Drag and Drop**: Intuitive drag-and-drop interface for adjusting appointments and resource allocations directly within the calendar view, powered by Atlassian's Pragmatic drag and drop.
+- **Customizable UI**: Built with `shadcn/ui` components that are highly customizable to fit into any application design.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Project Structure
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+```
+/src
+|-- /env.js                           # Environment configurations
+|-- /utils
+|   └── fakeData.ts                   # Utilities to generate fake data
+|-- /styles
+|   └── globals.css                   # Global styles
+|-- /services
+|   ├── AppointmentService.ts         # Manages appointment CRUD operations
+|   ├── index.ts                      # Service exports
+|   └── ResourceService.ts            # Manages resource CRUD operations
+|-- /public
+|   └── favicon.ico                   # Favicon
+|-- /models
+|   ├── Appointment.ts                # Appointment data model
+|   ├── index.ts                      # Model exports
+|   └── Resource.ts                   # Resource data model
+|-- /lib
+|   └── utils.ts                      # Additional utility functions
+|-- /contexts
+|   ├── PlannerDataContext.tsx        # Context for managing Planner data
+|   └── PlannerContext.tsx            # Context for managing overall app state
+|-- /components
+|   ├── ui                            # UI components following `shadcn/ui` philosophy
+|   └── planner                       # Planner-specific components
+└── /app
+    ├── layout.tsx                    # Main layout component
+    └── page.tsx                      # Entry page component
+```
 
-## Learn More
+## Getting Started
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+To get started with Planner, clone the repository and install the necessary dependencies:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+git clone <repository-url>
+cd planner
+npm install
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+Start the development server:
 
-## How do I deploy this?
+```bash
+npm start
+```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## Credits
+
+- **shadcn**: For the philosophy of reusable components which inspired the UI of Planner. [shadcn/ui](https://github.com/shadcn/ui)
+- **openstatus**: For the time picker component used in Planner. [openstatus time picker](https://time.openstatus.dev/#time-picker-demo.tsx)
+- **date-range-picker-for-shadcn**: An implementation of a date range picker following the shadcn philosophy. [date-range-picker-for-shadcn](https://github.com/johnpolacek/date-range-picker-for-shadcn/tree/main)
+- **Atlassian**: For their innovative Pragmatic drag and drop library used in our draggable components. [Atlassian Pragmatic Drag and Drop](https://atlassian.github.io/pragmatic-drag-and-drop/)
+
+## Demo
+
+Check out the live demo of the Planner: [Planner Demo](https://planner-tau-two.vercel.app/)
+
+## Contributing
+
+Contributions are welcome! If you have improvements or bug fixes:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make changes and commit (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a new Pull Request.

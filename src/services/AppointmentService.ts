@@ -1,4 +1,4 @@
-import { Appointment } from "~/models/Appointment";
+import { Appointment } from "@/models/Appointment";
 
 export class AppointmentService {
     private appointments: Appointment[];

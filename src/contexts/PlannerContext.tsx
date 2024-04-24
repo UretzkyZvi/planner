@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useMemo } from "react";
 import { startOfDay, endOfDay, startOfWeek } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { getLabelsForView } from "~/lib/utils";
+import { getLabelsForView } from "@/lib/utils";
 
 interface PlannerContextType {
   viewMode: "day" | "week" | "month" | "year";

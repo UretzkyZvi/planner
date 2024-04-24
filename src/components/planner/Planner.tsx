@@ -1,16 +1,16 @@
 import React, { FC, useEffect } from "react";
 import CalendarToolbar from "./PlannerToolbar";
 import Appointment from "./Appointment";
-import { Appointment as AppointmentType, Resource } from "~/models";
+import { Appointment as AppointmentType, Resource } from "@/models";
 import {
   PlannerDataContextProvider,
   useData,
-} from "~/contexts/PlannerDataContext";
-import { PlannerProvider, useCalendar } from "~/contexts/PlannerContext";
+} from "@/contexts/PlannerDataContext";
+import { PlannerProvider, useCalendar } from "@/contexts/PlannerContext";
 import { Timeline } from "./Timeline";
 import { Table, TableBody, TableRow } from "../ui/table";
 import ResourceTableCell from "./ResourceTableCell";
-import { calculateNewDates, filterAppointments } from "~/lib/utils";
+import { calculateNewDates, filterAppointments } from "@/lib/utils";
 import DropTableCell from "./DropTableCell";
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 

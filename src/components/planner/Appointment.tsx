@@ -12,17 +12,17 @@ import {
 import {
   Appointment as AppointmentType,
   updateAppointmentSchema,
-} from "~/models/Appointment";
-import { useData } from "~/contexts/PlannerDataContext";
+} from "@/models/Appointment";
+import { useData } from "@/contexts/PlannerDataContext";
 import { Button } from "../ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "~/components/ui/popover";
+} from "@/components/ui/popover";
 import { CalendarIcon, EllipsisVertical } from "lucide-react";
 import { draggable } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { cn } from "~/lib/utils";
+import { cn } from "@/lib/utils";
 import { Badge } from "../ui/badge";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -35,7 +35,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/components/ui/form";
+} from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { Calendar } from "../ui/calendar";
 import { TimePicker } from "../ui/time-picker";

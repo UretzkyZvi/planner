@@ -1,6 +1,6 @@
 import { faker, Randomizer } from '@faker-js/faker';
 import { addDays, addHours, differenceInCalendarDays } from 'date-fns';
-import { Appointment, Resource } from '~/models';
+import { Appointment, Resource } from '@/models';
 
 // Generate a specified number of resources
 const generateResources = (num: number): Resource[] => {

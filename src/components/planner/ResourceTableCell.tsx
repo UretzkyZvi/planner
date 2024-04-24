@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import { useData } from "~/contexts/PlannerDataContext";
-import { Resource } from "~/models";
+import { useData } from "@/contexts/PlannerDataContext";
+import { Resource } from "@/models";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { cn } from "~/lib/utils";
+import { cn } from "@/lib/utils";
 import { TableCell } from "../ui/table";
 
 export interface ResourceTableCellProps

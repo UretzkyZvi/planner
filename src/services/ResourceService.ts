@@ -1,4 +1,4 @@
-import { Resource } from "~/models/Resource";
+import { Resource } from "@/models/Resource";
 
 export class ResourceService {
     private resources: Resource[];

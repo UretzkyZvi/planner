@@ -14,8 +14,8 @@ import {
 import {
   Appointment as AppointmentType,
   createAppointmentSchema,
-} from "~/models/Appointment";
-import { useData } from "~/contexts/PlannerDataContext";
+} from "@/models/Appointment";
+import { useData } from "@/contexts/PlannerDataContext";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -27,7 +27,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { cn } from "~/lib/utils";
+import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";

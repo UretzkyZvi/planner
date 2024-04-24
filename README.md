@@ -1,19 +1,19 @@
 # Planner
 
-Planner is an advanced scheduling component for React, designed to enhance applications with resource management capabilities. This component seamlessly integrates into your existing workflows, offering intuitive interfaces for efficient appointment and resource management. Embracing the shadcn/ui philosophy, Planner focuses on reusability and customization, providing flexible UI components that are easily adaptable rather than fixed to a static library.
+Planner is a highly adaptable scheduling component tailored for React applications. This tool enriches your application with robust resource management functionalities. Planner integrates smoothly into your existing systems, presenting intuitive interfaces for effective management of appointments and resources. By embodying the principles of shadcn/ui, Planner emphasizes component reusability and adaptability, offering a modular approach to UI construction.
 
 ![demo](./images/demo.gif)
 
 ## Features
 
-- **Dynamic Scheduling**: Utilize a versatile component to manage and visualize appointments across various time frames including daily, weekly, monthly, and yearly views.
-- **Resource Management**: Incorporate resource tracking functionalities, assigning and managing elements such as rooms or personnel in relation to appointments.
-- **Drag and Drop**: Enhance your application with an intuitive drag-and-drop interface for adjusting appointments and resources, facilitated by Atlassian's Pragmatic drag and drop.
-- **Customizable UI**: Leverage `shadcn/ui` for highly customizable UI components, designed to seamlessly integrate and adapt to your application's design aesthetics.
+- **Dynamic Scheduling**: Equip your application with a powerful component to manage and visualize appointments effectively across various timelines including daily, weekly, monthly, and yearly views.
+- **Resource Management**: Easily assign and track essential resources such as rooms or personnel associated with specific appointments.
+- **Drag and Drop**: Simplify appointment adjustments and resource allocations with an intuitive drag-and-drop interface, powered by Atlassian's Pragmatic drag and drop.
+- **Customizable UI**: Utilize the flexible `shadcn/ui` components to ensure that Planner fits perfectly within your application's design.
 
 ## Project Structure
 
-```
+```plaintext
 /src
 |-- /env.js                           # Environment configurations
 |-- /utils
@@ -33,7 +33,7 @@ Planner is an advanced scheduling component for React, designed to enhance appli
 |-- /lib
 |   └── utils.ts                      # Additional utility functions
 |-- /contexts
-|   ├── PlannerDataContext.tsx        # Context for managing Planner data
+|   ├── CalendarDataContext.tsx       # Context for managing Planner data
 |   └── PlannerContext.tsx            # Context for managing overall app state
 |-- /components
 |   ├── ui                            # UI components following `shadcn/ui` philosophy
@@ -45,37 +45,76 @@ Planner is an advanced scheduling component for React, designed to enhance appli
 
 ## Getting Started
 
-To get started with Planner, clone the repository and install the necessary dependencies:
+To start using Planner in your project, follow these steps to install and configure the necessary components:
 
-```bash
-git clone <repository-url>
-cd planner
-npm install
-```
+### Steps to Install
 
-Start the development server:
+1. Copy the contents from the `/components/planner` directory.
+2. Include the model files from the `/models` directory.
+3. Integrate contexts from the `/contexts` directory for state management.
+4. Utilize services from the `/services` directory to handle business logic.
+5. Merge the utility functions from `/lib/utils.ts` into your project's utility functions.
 
-```bash
-npm start
+### Additional Dependencies
+
+Ensure to include the following dependencies in your project:
+
+- `react-day-picker` for date picking functionalities.
+- `date-fns` for handling date operations.
+- `@atlaskit/pragmatic-drag-and-drop` for implementing the drag and drop features.
+
+### Style Integration
+
+Add the following styles to your global stylesheet to ensure the calendar components display correctly:
+
+```css
+/* Scrollbar customization for calendar components */
+.calendar-scroll::-webkit-scrollbar {
+  width: 8px;
+  scrollbar-width: thin;
+}
+.calendar-scroll::-webkit-scrollbar-track {
+  background: var(--background);
+}
+.calendar-scroll::-webkit-scrollbar-track:hover {
+  background: var(--muted);
+}
+.calendar-scroll::-webkit-scrollbar-thumb {
+  background: #DADCE0;
+  border-radius: 6px;
+  cursor: grab;
+}
+.calendar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #BDC1C6;
+}
+.calendar-scroll::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+}
 ```
 
 ## Credits
 
-- **shadcn**: For the philosophy of reusable components which inspired the UI of Planner. [shadcn/ui](https://github.com/shadcn/ui)
-- **openstatus**: For the time picker component used in Planner. [openstatus time picker](https://time.openstatus.dev/#time-picker-demo.tsx)
-- **date-range-picker-for-shadcn**: An implementation of a date range picker following the shadcn philosophy. [date-range-picker-for-shadcn](https://github.com/johnpolacek/date-range-picker-for-shadcn/tree/main)
-- **Atlassian**: For their innovative Pragmatic drag and drop library used in our draggable components. [Atlassian Pragmatic Drag and Drop](https://atlassian.github.io/pragmatic-drag-and-drop/)
+Special thanks to the following projects and their teams for inspiration and tools that helped enhance Planner:
+
+- **shadcn/ui**: For the philosophy of reusable components. [Visit shadcn/ui](https://github.com/shadcn/ui)
+- **openstatus**: For the innovative time picker component. [openstatus time picker](https://time.openstatus.dev/#time-picker-demo.tsx)
+- **date-range-picker-for-shadcn**: For the tailored date range picker. [Visit date-range-picker-for-shadcn](https://github.com/johnpolacek/date-range-picker-for-shadcn/tree/main)
+- **Atlassian**: For the groundbreaking Pragmatic drag and drop library. [Atlassian Pragmatic Drag and Drop](https://atlassian.github.io/pragmatic-drag-and-drop/)
 
 ## Demo
 
-Check out the live demo of the Planner: [Planner Demo](https://planner-tau-two.vercel.app/)
+Experience Planner in action: [Planner Demo](https://planner-tau-two.vercel.app/)
 
 ## Contributing
 
-Contributions are welcome! If you have improvements or bug fixes:
+We welcome contributions to Planner! Whether it's feature enhancements, bug fixes, or documentation improvements, follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Make changes and commit (`git commit -am 'Add some feature'`).
+2. Create a new branch (`git checkout -
+
+b feature/your-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
 4. Push to the branch (`git push origin feature/your-feature`).
 5. Open a new Pull Request.
+
+Let's make Planner even better together!

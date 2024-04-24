@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { TableCell } from "../ui/table";
 import { dropTargetForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { Resource } from "~/models";
-import { cn } from "~/lib/utils";
+import { Resource } from "@/models";
+import { cn } from "@/lib/utils";
 
 interface DropTableCellProps
   extends React.HTMLAttributes<HTMLTableCellElement> {

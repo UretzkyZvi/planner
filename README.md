@@ -15,7 +15,6 @@ Planner is a highly adaptable scheduling component tailored for React applicatio
 
 ```plaintext
 /src
-|-- /env.js                           # Environment configurations
 |-- /utils
 |   └── fakeData.ts                   # Utilities to generate fake data
 |-- /styles
@@ -24,8 +23,6 @@ Planner is a highly adaptable scheduling component tailored for React applicatio
 |   ├── AppointmentService.ts         # Manages appointment CRUD operations
 |   ├── index.ts                      # Service exports
 |   └── ResourceService.ts            # Manages resource CRUD operations
-|-- /public
-|   └── favicon.ico                   # Favicon
 |-- /models
 |   ├── Appointment.ts                # Appointment data model
 |   ├── index.ts                      # Model exports

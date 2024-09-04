@@ -96,7 +96,7 @@ Special thanks to the following projects and their teams for inspiration and too
 - **shadcn/ui**: For the philosophy of reusable components. [Visit shadcn/ui](https://github.com/shadcn/ui)
 - **openstatus**: For the innovative time picker component. [openstatus time picker](https://time.openstatus.dev/#time-picker-demo.tsx)
 - **date-range-picker-for-shadcn**: For the tailored date range picker. [Visit date-range-picker-for-shadcn](https://github.com/johnpolacek/date-range-picker-for-shadcn/tree/main)
-- **Atlassian**: For the groundbreaking Pragmatic drag and drop library. [Atlassian Pragmatic Drag and Drop](https://atlassian.github.io/pragmatic-drag-and-drop/)
+- **Atlassian**: For the groundbreaking Pragmatic drag and drop library. [Atlassian Pragmatic Drag and Drop](https://github.com/atlassian/pragmatic-drag-and-drop)
 
 ## Demo
 

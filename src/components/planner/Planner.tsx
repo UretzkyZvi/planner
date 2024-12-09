@@ -1,22 +1,22 @@
-import React, { FC, useEffect } from "react";
-import CalendarToolbar from "./PlannerToolbar";
-import Appointment from "./Appointment";
-import { Appointment as AppointmentType, Resource } from "@/models";
+import { PlannerProvider, useCalendar } from "@/contexts/PlannerContext";
 import {
   PlannerDataContextProvider,
   useData,
 } from "@/contexts/PlannerDataContext";
-import { PlannerProvider, useCalendar } from "@/contexts/PlannerContext";
-import { Timeline } from "./Timeline";
-import { Table, TableBody, TableRow } from "../ui/table";
-import ResourceTableCell from "./ResourceTableCell";
 import { calculateNewDates, filterAppointments } from "@/lib/utils";
-import DropTableCell from "./DropTableCell";
+import { Appointment as AppointmentType, Resource } from "@/models";
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
+import React, { FC, useEffect } from "react";
+import { Table, TableBody, TableRow } from "../ui/table";
+import Appointment from "./Appointment";
+import DropTableCell from "./DropTableCell";
+import CalendarToolbar from "./PlannerToolbar";
+import ResourceTableCell from "./ResourceTableCell";
+import { Timeline } from "./Timeline";
 
 export interface PlannerProps extends React.HTMLAttributes<HTMLDivElement> {
   initialResources: Resource[];
-  initialAppointments: AppointmentType[]; 
+  initialAppointments: AppointmentType[];
 }
 
 const Planner: React.FC<PlannerProps> = ({
@@ -97,16 +97,12 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
         <Table>
           <Timeline />
           <TableBody>
-            {resources.map((resource) => (
-              <TableRow key={resource.id}>
-                <ResourceTableCell resourceItem={resource} />
-                {timeLabels?.map((label, index) => (
-                  <DropTableCell
-                    resourceId={resource.id}
-                    columnIndex={index}
-                    key={index}
-                  >
-                    {appointments
+            {resources.map((resource) => {
+              return (
+                <TableRow key={resource.id}>
+                  <ResourceTableCell resourceItem={resource} />
+                  {timeLabels?.map((label, index) => {
+                    const filteredAppointments = appointments
                       .filter(
                         (appt) =>
                           filterAppointments(
@@ -116,19 +112,35 @@ const CalendarContent: React.FC<CalendarContentProps> = ({ ...props }) => {
                             viewMode,
                           ) && appt.resourceId === resource.id,
                       )
-                      .sort((a, b) => a.start.getTime() - b.start.getTime())
-                      .map((appt) => (
-                        <Appointment
-                          appointment={appt}
-                          columnIndex={index}
-                          resourceId={resource.id}
-                          key={appt.id}
-                        />
-                      ))}
-                  </DropTableCell>
-                ))}
-              </TableRow>
-            ))}
+                      .sort((a, b) => a.start.getTime() - b.start.getTime());
+
+                    const dynamicHeight = filteredAppointments.length * 100;
+
+                    return (
+                      <DropTableCell
+                        resourceId={resource.id}
+                        columnIndex={index}
+                        key={index}
+                        className="relative border border-gray-200"
+                        style={{
+                          height: `${viewMode === "day" ? dynamicHeight : undefined}px`,
+                        }}
+                      >
+                        {filteredAppointments.map((appt, i) => (
+                          <Appointment
+                            appointment={appt}
+                            columnIndex={index}
+                            resourceId={resource.id}
+                            key={appt.id}
+                            itemIndex={i}
+                          />
+                        ))}
+                      </DropTableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>

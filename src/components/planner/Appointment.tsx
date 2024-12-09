@@ -1,7 +1,35 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { useCalendar } from "@/contexts/PlannerContext";
+import { useData } from "@/contexts/PlannerDataContext";
+import { cn } from "@/lib/utils";
+import {
+  Appointment as AppointmentType,
+  updateAppointmentSchema,
+} from "@/models/Appointment";
+import { draggable } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
+import { CalendarIcon, EllipsisVertical } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { Calendar } from "../ui/calendar";
 import {
   Card,
   CardContent,
@@ -9,51 +37,26 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import {
-  Appointment as AppointmentType,
-  updateAppointmentSchema,
-} from "@/models/Appointment";
-import { useData } from "@/contexts/PlannerDataContext";
-import { Button } from "../ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { CalendarIcon, EllipsisVertical } from "lucide-react";
-import { draggable } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { cn } from "@/lib/utils";
-import { Badge } from "../ui/badge";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { Calendar } from "../ui/calendar";
 import { TimePicker } from "../ui/time-picker";
 
 interface AppointmentProps {
   appointment: AppointmentType;
   resourceId: string;
   columnIndex: number;
+  itemIndex: number;
 }
 
 const Appointment: React.FC<AppointmentProps> = ({
   appointment,
   resourceId,
   columnIndex,
+  itemIndex,
 }) => {
   const { updateAppointment } = useData();
   const ref = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const { viewMode } = useCalendar();
 
   useEffect(() => {
     const element = ref.current!;
@@ -86,7 +89,19 @@ const Appointment: React.FC<AppointmentProps> = ({
   }
 
   return (
-    <Card ref={ref} className="hover:cursor-grab   ">
+    <Card
+      ref={ref}
+      className={`${viewMode === "day" ? "absolute" : "relative"} z-10 hover:cursor-grab`}
+      style={
+        viewMode === "day"
+          ? {
+              width: `${((appointment.end.getTime() - appointment.start.getTime()) / 3600000) * 100}%`,
+              left: `${(appointment.start.getMinutes() / 60) * 100}%`,
+              top: `${itemIndex * 100}px`,
+            }
+          : undefined
+      }
+    >
       <CardHeader className="flex flex-row items-center justify-between p-1">
         <Badge variant={"outline"} className="  truncate pl-2 text-xs">
           {appointment.details.service}
@@ -98,7 +113,7 @@ const Appointment: React.FC<AppointmentProps> = ({
             </div>
           </PopoverTrigger>
           <PopoverContent className="w-fit">
-            <Card className="border-none p-0 shadow-none w-fit">
+            <Card className="w-fit border-none p-0 shadow-none">
               <CardHeader className="p-0">
                 <CardTitle className="text-xs">{appointment.title}</CardTitle>
                 <CardDescription className="text-xs">
@@ -107,7 +122,7 @@ const Appointment: React.FC<AppointmentProps> = ({
                 </CardDescription>
               </CardHeader>
               <CardContent className="w-fit">
-                <Form {...form} >
+                <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
